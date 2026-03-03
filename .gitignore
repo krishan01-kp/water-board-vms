@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Database (auto-created on first run)
+server/vms.db
+
+# Uploaded photos (run-time data)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Environment variables
+.env
+server/.env
+client/.env
+
+# Build output
+client/dist/
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
