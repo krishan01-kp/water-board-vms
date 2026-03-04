@@ -101,8 +101,9 @@ const Login = () => {
                         </button>
                     </form>
 
-                    <div className="mt-6 pt-6 border-t border-gray-100">
-                        <p className="text-xs text-gray-400 text-center">Default admin: <span className="font-mono font-medium text-gray-600">admin</span> / <span className="font-mono font-medium text-gray-600">admin123</span></p>
+                    <div className="mt-6 pt-6 border-t border-gray-100 text-center">
+                        <p className="text-xs text-gray-400">Default admin: <span className="font-mono font-medium text-gray-600">admin</span> / <span className="font-mono font-medium text-gray-600">admin123</span></p>
+                        <p className="text-[10px] text-gray-300 mt-2 font-mono break-all">API Target: {import.meta.env.VITE_API_URL || 'http://localhost:5000'} (Check this matches Railway!)</p>
                     </div>
                 </div>
             </div>
