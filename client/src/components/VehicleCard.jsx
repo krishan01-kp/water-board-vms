@@ -1,8 +1,9 @@
 import StatusBadge from './StatusBadge';
+import { BASE_URL } from '../api/axios';
 
 const VehicleCard = ({ vehicle }) => {
     const photoUrl = vehicle.photo_path
-        ? `http://localhost:5000${vehicle.photo_path}`
+        ? `${BASE_URL}${vehicle.photo_path}`
         : null;
 
     return (

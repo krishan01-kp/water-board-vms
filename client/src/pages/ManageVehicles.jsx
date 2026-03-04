@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Navbar from '../components/Navbar';
 import StatusBadge from '../components/StatusBadge';
-import api from '../api/axios';
+import api, { BASE_URL } from '../api/axios';
 
 const VEHICLE_TYPES = ['Car', 'Truck', 'Van', 'Motorcycle', 'Heavy Machinery', 'Water Tanker'];
 
@@ -71,7 +71,7 @@ const ManageVehicles = () => {
     const handleEdit = (v) => {
         setEditVehicle(v);
         setFormData({ vehicle_type: v.vehicle_type, vehicle_number: v.vehicle_number, driver_name: v.driver_name, photo: null });
-        setPreviewUrl(v.photo_path ? `http://localhost:5000${v.photo_path}` : null);
+        setPreviewUrl(v.photo_path ? `${BASE_URL}${v.photo_path}` : null);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -204,7 +204,7 @@ const ManageVehicles = () => {
                                                         <td className="px-4 py-3">
                                                             <div className="w-10 h-10 rounded-lg overflow-hidden bg-blue-100 flex items-center justify-center">
                                                                 {v.photo_path ? (
-                                                                    <img src={`http://localhost:5000${v.photo_path}`} alt={v.vehicle_number} className="w-full h-full object-cover" />
+                                                                    <img src={`${BASE_URL}${v.photo_path}`} alt={v.vehicle_number} className="w-full h-full object-cover" />
                                                                 ) : (
                                                                     <span className="text-lg">🚗</span>
                                                                 )}
