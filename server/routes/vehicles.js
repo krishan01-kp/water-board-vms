@@ -55,7 +55,8 @@ router.put('/:id', authMiddleware, upload.single('photo'), (req, res) => {
 
     if (req.file) {
         if (vehicle.photo_path) {
-            const oldPath = path.join(__dirname, '..', vehicle.photo_path);
+            const baseDir = process.env.DATA_DIR || path.join(__dirname, '..');
+            const oldPath = path.join(baseDir, vehicle.photo_path);
             if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
         }
         photo_path = `/uploads/${req.file.filename}`;
@@ -77,7 +78,8 @@ router.delete('/:id', authMiddleware, (req, res) => {
     if (!vehicle) return res.status(404).json({ error: 'Vehicle not found.' });
 
     if (vehicle.photo_path) {
-        const photoPath = path.join(__dirname, '..', vehicle.photo_path);
+        const baseDir = process.env.DATA_DIR || path.join(__dirname, '..');
+        const photoPath = path.join(baseDir, vehicle.photo_path);
         if (fs.existsSync(photoPath)) fs.unlinkSync(photoPath);
     }
 
