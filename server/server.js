@@ -19,29 +19,36 @@ if (!fs.existsSync(uploadDir)) {
 }
 app.use('/uploads', express.static(uploadDir));
 
-// Health check (before DB init)
+let dbStatus = 'initializing';
+let dbError = null;
+
+// Health check (always available)
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', message: 'Water Board VMS API running' });
+    res.json({ status: dbStatus, message: 'Water Board VMS API', error: dbError });
 });
 
-// Initialize DB then mount routes
-initDb().then(() => {
-    const authRoutes = require('./routes/auth');
-    const vehicleRoutes = require('./routes/vehicles');
-    const userRoutes = require('./routes/users');
-    const breakdownRoutes = require('./routes/breakdowns');
-    const dashboardRoutes = require('./routes/dashboard');
+// Always bind to port first, so Railway doesn't timeout the container
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Server listening on port ${PORT}`);
 
-    app.use('/api/auth', authRoutes);
-    app.use('/api/vehicles', vehicleRoutes);
-    app.use('/api/users', userRoutes);
-    app.use('/api/breakdowns', breakdownRoutes);
-    app.use('/api/dashboard', dashboardRoutes);
+    // Initialize DB after listening
+    initDb().then(() => {
+        dbStatus = 'ok';
+        const authRoutes = require('./routes/auth');
+        const vehicleRoutes = require('./routes/vehicles');
+        const userRoutes = require('./routes/users');
+        const breakdownRoutes = require('./routes/breakdowns');
+        const dashboardRoutes = require('./routes/dashboard');
 
-    app.listen(PORT, () => {
-        console.log(`🚀 Server running on http://localhost:${PORT}`);
+        app.use('/api/auth', authRoutes);
+        app.use('/api/vehicles', vehicleRoutes);
+        app.use('/api/users', userRoutes);
+        app.use('/api/breakdowns', breakdownRoutes);
+        app.use('/api/dashboard', dashboardRoutes);
+        console.log('✅ All routes mounted and ready.');
+    }).catch(err => {
+        dbStatus = 'failed';
+        dbError = err.message || String(err);
+        console.error('❌ Failed to initialize database:', err);
     });
-}).catch(err => {
-    console.error('❌ Failed to initialize database:', err);
-    process.exit(1);
 });
