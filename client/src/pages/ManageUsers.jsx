@@ -75,7 +75,7 @@ const ManageUsers = () => {
                     {/* Create User Form */}
                     <div className="lg:col-span-1">
                         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-                            <h2 className="font-bold text-gray-900 mb-4">➕ Create Driver Account</h2>
+                            <h2 className="font-bold text-gray-900 mb-4">➕ Create OIC Account</h2>
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
@@ -100,12 +100,12 @@ const ManageUsers = () => {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Driver Name</label>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">OIC Name</label>
                                     <input
                                         type="text"
                                         value={form.driver_name}
                                         onChange={e => setForm(f => ({ ...f, driver_name: e.target.value }))}
-                                        placeholder="Full name of driver"
+                                        placeholder="Full name of OIC"
                                         required
                                         className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
@@ -135,7 +135,7 @@ const ManageUsers = () => {
                                         <thead>
                                             <tr className="bg-gray-50">
                                                 <th className="text-left px-4 py-3 text-gray-600 font-semibold">Username</th>
-                                                <th className="text-left px-4 py-3 text-gray-600 font-semibold">Driver Name</th>
+                                                <th className="text-left px-4 py-3 text-gray-600 font-semibold">OIC Name</th>
                                                 <th className="text-left px-4 py-3 text-gray-600 font-semibold">Role</th>
                                                 <th className="text-left px-4 py-3 text-gray-600 font-semibold hidden sm:table-cell">Joined</th>
                                                 <th className="text-left px-4 py-3 text-gray-600 font-semibold">Action</th>

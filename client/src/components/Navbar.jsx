@@ -49,8 +49,8 @@ const Navbar = () => {
                                 key={link.to}
                                 to={link.to}
                                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${location.pathname === link.to
-                                        ? 'bg-white/20 text-white'
-                                        : 'text-blue-100 hover:bg-white/10 hover:text-white'
+                                    ? 'bg-white/20 text-white'
+                                    : 'text-blue-100 hover:bg-white/10 hover:text-white'
                                     }`}
                             >
                                 {link.label}
@@ -63,7 +63,7 @@ const Navbar = () => {
                         <div className="text-right">
                             <span className="text-white text-sm font-medium block">{user?.driver_name || user?.username}</span>
                             <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${isAdmin ? 'bg-amber-400 text-amber-900' : 'bg-blue-400 text-blue-900'}`}>
-                                {isAdmin ? 'Admin' : 'Driver'}
+                                {isAdmin ? 'Admin' : 'OIC'}
                             </span>
                         </div>
                         <button
@@ -94,8 +94,8 @@ const Navbar = () => {
                                 to={link.to}
                                 onClick={() => setMobileOpen(false)}
                                 className={`block px-3 py-2 rounded-lg text-sm font-medium mb-1 transition-colors ${location.pathname === link.to
-                                        ? 'bg-white/20 text-white'
-                                        : 'text-blue-100 hover:bg-white/10'
+                                    ? 'bg-white/20 text-white'
+                                    : 'text-blue-100 hover:bg-white/10'
                                     }`}
                             >
                                 {link.label}

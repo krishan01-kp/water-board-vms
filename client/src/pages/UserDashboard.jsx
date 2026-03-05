@@ -41,7 +41,7 @@ const UserDashboard = () => {
                 <div className="bg-gradient-to-r from-blue-800 to-blue-700 rounded-2xl p-6 mb-6 text-white shadow-lg">
                     <p className="text-blue-200 text-sm font-medium mb-1">Welcome back,</p>
                     <h1 className="text-2xl font-extrabold">{user?.driver_name || user?.username}</h1>
-                    <p className="text-blue-200 text-sm mt-1">Sri Lanka Water Board – Driver Portal</p>
+                    <p className="text-blue-200 text-sm mt-1">Sri Lanka Water Board – OIC Portal</p>
                 </div>
 
                 {/* Report Breakdown Button */}
