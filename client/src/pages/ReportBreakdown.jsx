@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import api from '../api/axios';
 
-const VEHICLE_TYPES = ['Car', 'Truck', 'Van', 'Motorcycle', 'Heavy Machinery', 'Water Tanker'];
+const VEHICLE_TYPES = ['Cab', 'Boom Truck', 'Lorry', 'Crew Cab', 'Motor Cycle', 'Three Wheel', 'Bachoe', 'Tractor'];
 
 const ReportBreakdown = () => {
     const [vehicles, setVehicles] = useState([]);

@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import StatusBadge from '../components/StatusBadge';
 import api, { BASE_URL } from '../api/axios';
 
-const VEHICLE_TYPES = ['Car', 'Truck', 'Van', 'Motorcycle', 'Heavy Machinery', 'Water Tanker'];
+const VEHICLE_TYPES = ['Cab', 'Boom Truck', 'Lorry', 'Crew Cab', 'Motor Cycle', 'Three Wheel', 'Bachoe', 'Tractor'];
 
 const ManageVehicles = () => {
     const [vehicles, setVehicles] = useState([]);
